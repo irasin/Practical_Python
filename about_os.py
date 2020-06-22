@@ -29,30 +29,43 @@ os.walk('dirname') # 返回一个生成器，以（dirpath, dirnames, filenames)
 
 os.remove('filename') # 删除一个文件
 
-os.rename('filename or dirname') # 重命名文件或目录
+os.rename('src', 'dst') # 重命名文件或目录
+os.renames('src', 'dst') # 递归重命名文件或目录
 os.stat('filename or dirname') # 返回一个dict, 显示文件或目录的信息
 
 
 # os.path模块中常用的一些操作
+
 os.path.abspath('path') # 返回path的绝对路径
 os.path.dirname('path') # 返回path的目录，等价于os.path.split('path')[0]
 os.path.basename('path') # 返回path最后的文件名，等价于os.path.split('path')[1]
+os.path.relpath('path', 'start') # 返回path基于start的相对路径
+os.path.realpath('path') # 返回path的标准路径，而非软链接
+
 
 os.path.split('path')  # 返回一个tuple，分割目录与文件名
+os.path.splitdrive('path') # 返回一个元祖，分割盘符与目录，用于Windows
 os.path.splitext('path')  # 返回一个tuple，分割文件路径与文件拓展名
 
-os.path.join('path1', 'path2', 'path3')  # 组合各个path
+
 
 os.path.exists('path') # 判断path是否存在
 os.path.isabs('path')  # 判断path是否为绝对路径
 os.path.isdir('path')  # 判断path是否为目录
 os.path.isfile('path')  # 判断path是否为文件
+os.path.islink('path') # 判断path是否为链接
+os.path.ismount('path') # 判断path是否为挂载点
+
 
 os.path.getsize('path') # 返回大小（字节）
 os.path.getctime('path') # 返回创建时间戳(浮点数)
 os.path.getmtime('path') # 返回最近修改时间戳
 os.path.getatime('path')  # 返回最近访问时间戳
 
+
+os.path.expanduser('~') # 把路径中包含～的部分修改为用户家目录
+os.path.expandvars('path') # 对路径中出现的$NAME或者${NAME}进行系统环境变量的替代
+os.path.join('path1', 'path2', 'path3')  # 组合各个path
 os.path.normcase('path') # Windows上用，将path中所有字符小写，并把斜杠换成反斜杠
 os.path.normpath('path') # 返回去除冗余的路径
 
