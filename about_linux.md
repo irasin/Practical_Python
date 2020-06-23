@@ -1,4 +1,27 @@
-1. 字符通配符
+1. `vim`，能用`vim`就别用`vi`了吧
+
+   1. 光标移动
+      + h，j，k，l分别是left，down，up，right
+      + 跳转到x行： xgg
+      + 下一个单词：w，上一个单词：b
+      + 下一页：ctrl + f，上一页：ctrl + b
+      + 下x行：xj，上x行：xk
+   2. 编辑
+      + 插入：i，替换：r，追加：a
+      + 复制：yy，剪切：cc，yxy或者cxc代表复制或剪切x行
+      + 撤销：u，粘贴：p
+      + 删除一个字符：x，删除整行：dd，删除到行尾：d$
+      + 查找：/或者？，下一个：n，上一个；shift + n
+      + 自动补全：ctrl + n
+   3. 命令模式
+      + :q 退出
+      + :w 保存，可加文件名
+      + :q! 强制退出
+   4. .vimrc配置，建议去github上下载个别人的
+      + :syntax on，语法高亮
+      + :set number，显示行号
+
+2. 字符通配符
 
    + `*` 匹配任意个数字符
    + `?` 匹配任意一个字符
@@ -6,48 +29,48 @@
      + `[abc]` 匹配abc中任意一个
      + `[a-f]` 匹配a到f中任意一个
 
-2. `ls`  dir
+3. `ls`  dir
 
    + `-a` 显示所有文件
 
    - `-l` 显示详细信息
    - `-h` 配合 -l使用，显示易于阅读的文件大小
 
-3. `cd `  dir
+4. `cd `  dir
 
    + `cd ~`或直接输入`cd`直接回到用户家目录
    + `cd -`切换到上一个使用的目录
 
-4. `mkdir ` dir
+5. `mkdir ` dir
 
    + `-p` 递归创建目录
 
-5. `rm` dir/file
+6. `rm` dir/file
 
    +  `-r` 递归删除目录
    +  `-f` 强制删除
 
-6. `tree` dir
+7. `tree` dir
 
    + `-d` 只显示目录，不显示文件
 
-7. `cp` dir/file
+8. `cp` dir/file
 
    + `-i`  覆盖文件前提示
    + `-r` 递归复制src目录，dst也必须为目录
 
-8. `mv` dir/file
+9. `mv` dir/file
 
    + `-i` 覆盖文件前提示
 
-9. `cat` file
+10. `cat` file
 
-   + `-b` 对非空输出行编号
-   + `-n` 对所有输出行编号
+    + `-b` 对非空输出行编号
+    + `-n` 对所有输出行编号
 
-10. `more` /`less`  file (less更有用)
+11. `more` /`less`  file (less更有用)
 
-11. `grep` string  file
+12. `grep` string  file
 
     + `-n`  显示行号
     + `-v`  显示不匹配行
@@ -56,45 +79,45 @@
       + `^a` 搜索行开头为a的
       + `a$` 搜索行结尾为a的
 
-12. `echo` string
+13. `echo` string
 
     + 通常与重定向符号`>`，`>>` 配合使用
 
-13. 重定向： 将本来显示在终端的内容 **输出**/**追加**到指定文件中
+14. 重定向： 将本来显示在终端的内容 **输出**/**追加**到指定文件中
 
     + `>`  输出（会覆盖原文件）
     + `>>` 追加（会将内容追加到原文件的末尾）
 
-14. 管道`|`：将**一个命令的输出**作为**另一个命令的输入**
+15. 管道`|`：将**一个命令的输出**作为**另一个命令的输入**
 
     + 常用的管道命令 `more` ， `grep`
       + `ls -alh | less`  将`ls`的结果用`less`查看
       + `ls -alh | grep vi ` 对`ls`的结果通过`grep`查看含有vi的内容
 
-15. `shutdown` 默认一分钟后重启
+16. `shutdown` 默认一分钟后重启
 
     + `-r` 重启
 
-16. `ifconfig` 查看和设置网卡配置
+17. `ifconfig` 查看和设置网卡配置
 
-17. `ping`  ip_address  
+18. `ping`  ip_address  
 
-18. `ssh`  user@remote
+19. `ssh`  user@remote
 
     + `-p` port，默认22
 
-19. `scp` src_path  user@remote`:`dst_path    
+20. `scp` src_path  user@remote`:`dst_path    
 
     +  `-P` port与`ssh` 不同，指定端口号时需要大写
     +  `-r`  递归复制目录
     +  服务器端的文件需要加冒号`:`
 
-20. `ssh` `scp `免密码设置
+21. `ssh` `scp `免密码设置
 
     + `ssh-keygen` 配置公钥 
     + `ssh-copy-id` [-p port] user@remote 上传至服务器
 
-21. `ssh` `scp `配置别名
+22. `ssh` `scp `配置别名
 
     + 创建`~/.ssh/config`
 
@@ -117,24 +140,24 @@
       #scp 1.py  tigers:1.py即可复制文件
       ```
 
-22. `chomod` 777 dir/file，修改权限
+23. `chomod` 777 dir/file，修改权限
 
     + `-R` ，递归修改
 
     + 权限对应的数字，read: 4，write: 2，excuse: 1
     + 三个数字对应user, group, others，777代表所有人可读可写可执行
 
-23. `chown` user_name dir/file ，修改dir/file的所有者
+24. `chown` user_name dir/file ，修改dir/file的所有者
 
     + `-R`，递归修改
 
-24. `su`  user_name，是substitute user的缩写，表示使用另一个用户的身份，默认使用root用户
+25. `su`  user_name，是substitute user的缩写，表示使用另一个用户的身份，默认使用root用户
 
     + `exit` 退出当前登陆用户
 
-25. `sudo` 以root权限执行
+26. `sudo` 以root权限执行
 
-26. 关于group的操作，需要`sudo`权限
+27. 关于group的操作，需要`sudo`权限
 
     + `groupadd` group_name，添加group
     + `groupdel` group_name，删除group
@@ -142,7 +165,7 @@
     + `chgrp` group_name dir/file，修改dir/file所属的组
       + `-R` 递归修改
 
-27. 关于user的操作，需要`sudo`权限
+28. 关于user的操作，需要`sudo`权限
 
     + `useradd` user_name，创建用户
       + `-m`，创建用户home目录
@@ -164,7 +187,7 @@
         + ubuntu中默认的shell为`dash`，然而这个不好用，建议修改
     + `which` cmd 查看命令所在路径
 
-28. 系统信息相关命令
+29. 系统信息相关命令
 
     1. 时间和日期
        + `date`，查看时间
@@ -186,11 +209,11 @@
        + `kill` PID，关闭进程
          + `-9`，强制关闭
 
-29. `find` [path] -name "*py"，在path下搜索名字结尾为py的文件/目录，path默认为当前目录
+30. `find` [path] -name "*py"，在path下搜索名字结尾为py的文件/目录，path默认为当前目录
 
     + 一般与通配符一起使用
 
-30. ln -s src dst，建立src的软链接，保存到路径dst
+31. ln -s src dst，建立src的软链接，保存到路径dst
 
     + `-s`表示创建软链接，没有的话表示硬链接（一般不使用硬链接）
       + 硬链接的源文件删除后，硬链接的文件也不受影响
@@ -199,7 +222,7 @@
     + 源文件src要使用绝对路径
       + 不然移动软链接后，指向失效
 
-31. 归档/压缩
+32. 归档/压缩
 
     1. `tar` ，归档/解档
 
@@ -229,7 +252,7 @@
        + `tar -jxvf` dst.tar.bz2
          + `-C ` path，解压缩到目标路径
 
-32. `apt`，Advanced Packaging Tool，Linux下的安装包管理工具
+33. `apt`，Advanced Packaging Tool，Linux下的安装包管理工具
 
     + 常用的命令
       + apt install 
@@ -257,7 +280,7 @@
 
 33. 配置软件源/镜像源
     + 国内可以用阿里云，清华，搜狐等镜像源
-34. `wget`与`curl`，都支持下载文件，略有[差别](https://blog.csdn.net/weixin520520/article/details/106828648?ops_request_misc=&request_id=&biz_id=102&utm_term=ubuntuwget curl&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-106828648)
+34. `wget`与`curl`，都支持下载文件，略有差别(https://blog.csdn.net/weixin520520/article/details/106828648?ops_request_misc=&request_id=&biz_id=102&utm_term=ubuntuwget curl&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-106828648)
     + `wget ` [-O name] url，下载并保存为name，也可以不加参数直接保存
     + `curl -o name` url，下载并保存为name，必须加参数
 
