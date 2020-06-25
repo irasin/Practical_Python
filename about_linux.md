@@ -86,7 +86,22 @@
 14. 重定向： 将本来显示在终端的内容 **输出**/**追加**到指定文件中
 
     + `>`  输出（会覆盖原文件）
+
     + `>>` 追加（会将内容追加到原文件的末尾）
+
+    + `<`  输入重定向
+
+      + `cat >output.txt <input.txt` 把input.txt的内容写入output.txt中
+
+    + `<<`
+
+      + `command << delimeter` 从键盘中读取输入， 直到遇到分隔符delimeter（自己定义）
+
+    +  涉及到文件描述符，需要查一下
+
+      + `>/dev/null 2>&1` 将标准输出和标准错误写入黑洞，即不显示
+
+      
 
 15. 管道`|`：将**一个命令的输出**作为**另一个命令的输入**
 
@@ -191,6 +206,7 @@
 
     1. 时间和日期
        + `date`，查看时间
+         + `date +"%F %T"`，输出标准年月日
        + `cal`，查看日历（calendar）
          + `-y` ，查看一年日历
     2. 磁盘与目录空间
@@ -280,7 +296,7 @@
 
 33. 配置软件源/镜像源
     + 国内可以用阿里云，清华，搜狐等镜像源
-34. `wget`与`curl`，都支持下载文件，略有差别(https://blog.csdn.net/weixin520520/article/details/106828648?ops_request_misc=&request_id=&biz_id=102&utm_term=ubuntuwget curl&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-106828648)
+34. `wget`与`curl`，都支持下载文件，略有[差别](https://blog.csdn.net/weixin520520/article/details/106828648?ops_request_misc=&request_id=&biz_id=102&utm_term=ubuntuwget curl&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-106828648)
     + `wget ` [-O name] url，下载并保存为name，也可以不加参数直接保存
     + `curl -o name` url，下载并保存为name，必须加参数
 
