@@ -2,9 +2,9 @@
 
    + 指定当前脚本要使用的shell解释器
 
-   ```bash
-   #!/bin/bash                           
-   ```
+     ```bash
+     #!/bin/bash                           
+     ```
 
    * 文件名要以`.sh` 为结尾
      * `filename.sh`
@@ -57,3 +57,152 @@
      ```
 
    + `unset` var，删除变量var
+
+3. 条件判断：`if` `elif ` `else` `then` `fi`
+
+   + 关键字有两个其他语言不多见的`then`和`fi`，要注意，其中`fi`为`if`的闭合
+
+     ```bash
+     #!/bin/bash
+     if condition
+     then
+     		command
+     elif condition
+     		command
+     else
+     		command
+     fi
+     ```
+
+   + 单行判断可以用`;`来分割语句（一般在命令行中执行时使用）
+
+     ```shell
+     if [ condition ]; then command; fi
+     ```
+
+4. 运算符
+
+   + 表达式计算工具
+
+     + `expr`，可以完成表达式的求值操作
+
+     ```bash
+     #!/bin/bash
+     read -p "请输入第一个数字: " var1
+     read -p "请输入第二个数字: " var2
+     res=`expr $var1 + $var2` #表达式，运算符前后必须有空格，完整的表达式要用反引号``包围
+     echo "两数之和为: " $res
+     ```
+
+   + 算术运算符（既支持数字也支持字符串）
+
+     + `+` 加法
+       + `expr $a + $b`
+     + `-` 减法
+       + `expr $a - $b`
+     + `*` 乘法
+       + `expr $a \* $b`，需要转义
+     + `/` 除法（整除）
+       + `expr $a / $b`
+     + `%` 取余
+       + `expr $a % $b`
+     + `=` 赋值
+       + `a=$b`
+     + `==` 判断相等（条件表达式要放在中括号`[]`里，并且括号前后和运算符前后要有空格）
+       + `[ $a == $b ]`
+     + `!=`  判断不相等
+       + `[ $a != $b ]`
+
+     ```bash
+     #!/bin/bash
+     a=7
+     b=2
+     
+     echo "a = " $a
+     echo "b = " $b
+     
+     echo "a + b" `expr $a + $b`
+     echo "a - b" `expr $a - $b`
+     echo "a * b" `expr $a \* $b`
+     echo "a / b" `expr $a / $b`
+     echo "a % b" `expr $a % $b`
+     
+     c=$a
+     echo "c = " $c
+     
+     if [ $a == $c ]
+     then
+     		echo "a == c"
+     fi
+     
+     if [ $a != $b ]
+     then
+     		echo "a != b"
+     else
+     		echo "a == b"
+     fi
+     ```
+
+   + 关系运算符（运算对象为数字，或者值为数字的字符串，返回true/false）
+
+     + `-eq`，equal，=
+       + `[ $a -eq $b ]`
+     + `-ne`，not equal，!=
+       + `[ $a -ne $b ]`
+     + `-gt`，great than，>
+       + ` [ $a -gt $b ]`
+     + `-lt`，less than，<
+       + `[ $a -lt $b]`
+     + `-ge`，great than or equal，>=
+       + `[ $a -ge $b ]`
+     + `-le`，less than or equal，<=
+       + `[ $a -le $b ]`
+
+   + 逻辑运算符（运算对象为条件，返回true/false）
+
+     + `!`，非
+       + `[ ! condition1 ]`
+     + `-o`，或
+       + `[ condition1 -o condition2 ]`
+     + `-a`，与
+       + `[ condition1 -a condition2 ]`
+
+   + 字符串运算符（运算对象为字符串）
+
+     + `=` ，判断字符串是否相等
+       + `[ $a = $b ]`
+     + `!=`，判断字符串是否不相等
+       + `[$a != $b ]`
+     + `-z`，`-n`，判断字符串长度是否为0
+       + `[ -z $a ]`
+       + `[-n $a ]`
+     + 字符串也可直接作为条件，判断是否为空
+       + `[ $a ]`
+
+   + 文件测试运算符
+
+     + `-d`，检测是否为目录
+       + `[ -d $path ]`
+     + `-f`，检测是否为文件
+       + `[ -f $path ]`
+     + `-r`，检测是否可读
+       + `[ -r $path ]`
+     + `-w`，检测是否可写
+       + `[ -w $path ]`
+     + `-x`，检测是否可执行
+       + `[ -x $path ]`
+     + `-e`，检测是否存在
+       + `[ -e $path ]`
+     + `-s`，检测是否非空
+       + `[-s $path ]`
+
+5. shell脚本传递接收参数
+
+   + 在脚本中可以用`$`加上参数对应的index来表示，如`$1`代表第一个参数，`$0`代表脚本名自身
+
+   ```bash
+   #!bin/bash
+   echo "$1 + $2 = "`expr $1 + $2`
+   ```
+
+   
